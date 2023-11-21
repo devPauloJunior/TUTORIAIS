@@ -1,12 +1,12 @@
 # Tutoriais e Aulas em TXT
 
-> Angular for Windows
+> Angular no Windows
 
-> Apache for Centos 8
+> Apache no Centos 8
 
-> Booting WSL with systemd
+> Booting WSL com systemd
 
-> Configuratuion Ambientes Linux
+> Configuração de Ambientes Linux
 
 > Aulas de Back-end
 
@@ -14,4 +14,4 @@
 
 > Git e GitHub
 
-> PostgreSql  
+> Comandos essenciais para PostgreSql  
