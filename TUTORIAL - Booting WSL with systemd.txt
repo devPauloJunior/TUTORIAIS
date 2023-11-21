@@ -1,0 +1,31 @@
+Fixed System has not been booted with systemd in WSL error | Booting WSL with systemd
+
+sudo apt install git
+git clone https://github.com/DamionGans/ubuntu-wsl2-systemd-script.git
+cd ubuntu-wsl2-systemd-script/
+bash ubuntu-wsl2-systemd-script.sh
+bash ubuntu-wsl2-systemd-script.sh --force
+
+wsl --shutdown -d "your distribution name"
+
+re-start the instance
+
+sudo systemctl enable --now apache2
+sudo systemctl enable --now postgresql
+
+wsl2 systemd 2021
+wsl2 systemd ubuntu
+wsl2 systemd docker
+wsl2 systemd alternative
+wsl systemd github
+wsl2-systemd-script
+wsl2 systemd-genie
+what is systemd
+wsl2 systemd ubuntu
+wsl2 systemd 2021
+wsl2 systemd docker
+wsl2 systemd alternative
+wsl systemd alternative
+wsl systemd github
+wsl2 systemctl not working
+wsl systemctl failed to connect to bus

@@ -1,0 +1,164 @@
+### INSTALAÇÃO E CONFIGURAÇÂO DJANGO ###
+### WINDOWS 11 ###
+
+OBS: O PYTHON JÁ DEVE ESTAR INSTALADO.
+
+### teste para verificar quais versões do python estão instaladas ###
+python --version
+	Python 3.10.4
+python3 --version
+	Python 3.9.13
+
+## utilize o python com maior versão.
+
+### criar o diretorio do seu projeto master
+mkdir nome_do_projeto 
+
+### JÁ NA PASTA QUE VAI FICAR O PROJETO ###
+## instalando o VIRTUALENV
+pip install virtualenv
+
+## iniciando um ambiente virtual
+virtualenv .
+
+## ativar o ambiente virtual
+.\Scripts\activate
+
+## instalar o DJANGO
+pip install django
+
+## É PRECISO VALIDAR QUAL ESTRUTURA DE BANDO DE DADOS SERA UTILIZADA
+
+## instalar o modulo de conexão com o PostgreSQL
+pip install psycopg2
+
+## instalar os binarios do modulo de conexão com o PostgreSQL
+pip install psycopg2-binary
+
+## instalar o modulo de suporte de adição de imagens no DB
+pip install Pillow 
+
+## verificar pacotes instalados no virtualenv
+pip freeze
+	asgiref==3.5.2
+	Django==4.1
+	Pillow==9.2.0
+	psycopg2==2.9.3
+	psycopg2-binary==2.9.3
+	sqlparse==0.4.2
+	tzdata==2022.2
+
+# criar um TXT com pacotes instalados no virtualenv para instalações futuras
+pip freeze > version.txt
+
+## iniciar o projeto
+django-admin startproject alurareceita .
+
+## entrar na pasta do projeto
+cd .\alurareceita\
+
+## abrir o arquivo de SETTINGS
+code .\settings.py
+
+## alterar as informações
+'en-us' >>> 'pt-br'
+'UTC' >>> 'America/Fortaleza'
+
+## apos alterar o arquivo e salvar volte para o diretório raiz do projeto
+cd ..
+
+## para ver todos os comandos do "manage.py"
+python .\manage.py help
+
+## vamos subir o serviço do django e ver no navegador
+python .\manage.py runserver
+
+## acessando o DEBUG do Django
+http://localhost:8000/
+	obs.: você vai visualizar uma página com um foguete.
+
+## no VSCODE "Command + Shift + P" e digitar ">python select interpreter"
+"Command + Shift + P" e digitar ">python select interpreter"
+
+## configurar o Banco de Dados (PostgreSQL)
+apos instalção criar um SERVER com o nome DBServer
+conexão será localhost
+usuario e senha a serem definidos com plenos diretos de acesso
+
+## criar um DATABASE
+para esse momento criamos com o nome de teste
+colocar o usuario e senha antes criado
+
+## configurar o arquivo do projeto "settings.py", aqui utilizamos o modulo do PostgreSQL
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'alura_receita',
+        'USER': 'user_con',
+        'PASSWORD': '12345678',
+        'HOST': 'localhost'
+    }
+}
+
+## criar o APP de receitas
+python .\manage.py startapp receitas
+
+## abrir o arquivo "settings.py" no VSCODE
+code .\alurareceita\settings.py
+
+## adicionar o nome do APP
+INSTALLED_APPS = [
+	'receitas',
+	'django.contrib.admin',
+
+## criar um arquivo "urls.py" dentro do APP "receitas" no VSCODE
+code .\receitas\urls.py
+
+## configurar o arquivo URLS do APP "receitas"
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index')
+
+##  abrir o arquivo "views.py" no VSCODE
+code .\receitas\views.py
+
+## adiconaro o conteúdo abaixo no arquivo
+from django.shortcuts import render
+
+def index(request):
+    return render(request, 'index.html')
+
+## abrir o arquivo "urls.py" do projeto "alurareceita"
+code .\alurareceita\urls.py
+
+## adicionar o conteúdo abaixo no arquivo
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('', include('receitas.urls')),
+    path('admin/', admin.site.urls),
+]
+
+## criar dentro do APP "receitas" o diretório "templates" e criar um arquivo "index.html"
+
+## nesse momento já para aparecer o seu html no navegador.
+
+
+## abrir o arquivo "settings.py" no VSCODE
+code .\alurareceita\settings.py
+
+## fazer o import do "os" em seguida adicionar o diretório "STATIC" no "TEMPLATES" e o path junto do "STATIC_URL"
+1ª PARTE - from pathlib import Path, os
+2ª PARTE - 'DIRS': [os.path.join(BASE_DIR, 'receitas/templates')],
+3ª PARTE -	STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+			STATIC_URL = '/static/'
+			STATICFILES_DIRS = [
+    				os.path.join(BASE_DIR, 'alurareceita/static')
+			]
+
+## criar um diretório na base do projeto "alurareceita" com o nome "static"
+

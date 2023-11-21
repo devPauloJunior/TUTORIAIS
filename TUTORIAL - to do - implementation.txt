@@ -1,0 +1,44 @@
+cd .\Documents\REACT\
+
+npm create vite@latest
+
+√ Project name: ... to-do-app
+√ Select a framework: » React
+√ Select a variant: » JavaScript
+
+cd .\to-do-app\
+
+npm install
+
+code .
+
+cd .\Documents\DJANGO\
+
+python -m virtualenv to_do_app
+
+cd .\to_do_app\
+
+code .
+
+pip install -r requirements.txt
+
+pip list   
+Package             Version
+------------------- -------
+asgiref             3.7.2
+Django              4.2.1
+django-cors-headers 4.0.0
+djangorestframework 3.14.0
+Pillow              9.5.0
+pip                 23.1.2
+psycopg2            2.9.6
+psycopg2-binary     2.9.6
+pytz                2023.3
+setuptools          67.7.2
+sqlparse            0.4.4
+typing_extensions   4.6.2
+tzdata              2023.3
+wheel               0.40.0
+
+django-admin startproject core .
+

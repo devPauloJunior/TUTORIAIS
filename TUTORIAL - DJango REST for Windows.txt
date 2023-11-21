@@ -1,0 +1,89 @@
+### INSTALAÇÃO E CONFIGURAÇÂO DJANGO REST ###
+### WINDOWS 11 ###
+
+OBS: O PYTHON JÁ DEVE ESTAR INSTALADO.
+
+### teste para verificar quais versões do python estão instaladas ###
+python --version
+	Python 3.10.4
+python3 --version
+	Python 3.9.13
+
+## utilize o python com maior versão.
+
+### criar o diretorio do seu projeto master
+mkdir nome_do_projeto 
+
+### JÁ NA PASTA QUE VAI FICAR O PROJETO ###
+## instalando o VIRTUALENV
+pip install virtualenv
+
+## iniciando um ambiente virtual
+virtualenv .
+
+## ativar o ambiente virtual
+.\Scripts\activate
+
+## instalar os modulos para o projeto
+pip install django
+pip install djangorestframework
+pip install markdown
+
+## É PRECISO VALIDAR QUAL ESTRUTURA DE BANDO DE DADOS SERA UTILIZADA
+
+## iniciar o projeto
+django-admin startproject setup .
+
+## abrir o arquivo de SETTINGS
+code .\setup\settings.py
+
+## alterar as informações
+'en-us' >>> 'pt-br'
+'UTC' >>> 'America/Fortaleza'
+
+## vamos subir o serviço do django e ver no navegador
+python .\manage.py runserver
+
+## acessando o server do Django
+http://localhost:8000/
+	obs.: você vai visualizar uma página com um foguete.
+
+## no VSCODE "Command + Shift + P" e digitar ">python select interpreter"
+"Command + Shift + P" e digitar ">python select interpreter"
+
+## criar app
+python .\manage.py startapp av_rss
+
+## acessar o settings.py para add os apps
+INSTALLED_APPS = [
+   (...)
+	'rest_framework',
+   'av_rss',
+]
+
+## acessar o arquivo de views do app
+code .\av_rss\views.py
+
+## colocar o conteudo
+from django.http import JsonResponse
+
+def ChannelViewSet(request):
+    if request.method == 'GET':
+        queryset  = {'id':1, 'noticia':'Guerra na Ucraia'}
+        return JsonResponse(queryset)
+
+## acessar o arquivo de urls
+code .\setup\urls.py
+
+## colocar o conteudo
+from django.contrib import admin
+from django.urls import path
+from av_rss.views import ChannelViewSet
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('channel/', ChannelViewSet)
+]
+
+##
+

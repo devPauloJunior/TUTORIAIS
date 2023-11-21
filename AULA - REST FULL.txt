@@ -1,0 +1,52 @@
+O que é o CORS?
+O CORS (Cross-origin Resource Sharing) é um mecanismo usado para adicionar cabeçalhos HTTP que informam aos navegadores para permitir que uma aplicação Web seja executada em uma origem e acesse recursos de outra origem diferente. Esse tipo de ação é chamada de requisição cross-origin HTTP.
+
+É usado para habilitar solicitações entre sites para chamadas XMLHttpRequest ou FetchAPI (entre origens diferentes), web fonts (@font do CSS), texturas WebGL e frames de desenhos usando o drawImage().
+
+
+pip install django
+pip install djangorestframework
+pip install psycopg2 psycopg2-binary
+pip install django-cors-headers
+
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+    'corsheaders',
+]
+
+MIDDLEWARE = [
+ ...
+    "corsheaders.middleware.CorsMiddleware",
+    'django.middleware.common.CommonMiddleware',
+    ...
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+npm install axios
+
+Diretorio: src/Service
+
+arquivo: ApiService.js
+
+
+import axios from 'axios';
+
+export function getusers() {
+	return axios.get('http://192.168.177.96:8000/users/')
+	.then(res => {
+				return res.data
+})}
+
+diretorio: Components
+arquivo: UsersList.js
+
+const UsersList = () => {
+
+}
+
+export default UsersList

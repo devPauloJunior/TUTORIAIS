@@ -1,0 +1,22 @@
+### INSTALAÇÃO E CONFIGURAÇÂO ANGULAR ###
+### WINDOWS 11 ###
+
+OBS: COM O NODEJS JÁ INSTALADO.
+
+## instalar o angular cli
+npm install -g @angular/cli
+
+## criar o projeto
+ng new ByteBank
+
+## responda as duas perguntas
+Would you like to add Angular routing? (y/N) - N
+
+? Which stylesheet format would you like to use? (Use arrow keys)
+> CSS
+  SCSS   [ https://sass-lang.com/documentation/syntax#scss                ]
+  Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ] <<<<<<<<
+  Less   [ http://lesscss.org                                             ]
+
+
+

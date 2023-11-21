@@ -1,0 +1,26 @@
+### INSTALAÇÃO APACHE ###
+### CENTOS 8 ###
+
+# instalação
+sudo dnf install httpd
+
+# adicionar regra para HTTP e HTTPS no firewall permanente e validar
+sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --permanent --zone=public --add-service=http
+sudo firewall-cmd --reload
+sudo firewall-cmd --list-all | grep services
+
+# ativar serviço HTTPD
+sudo systemctl enable httpd
+
+# iniciar o serviço HTTPD
+sudo systemctl start httpd
+
+# ver STATUS do serviço
+sudo systemctl status httpd
+
+# verificar IP do servidor
+hostname -I
+
+# colocar no browser o ip do servidor e verificar se o serviço funcionou
+http://192.168.177.220

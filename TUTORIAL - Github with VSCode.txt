@@ -1,0 +1,23 @@
+GITHUB WITH VSCODE
+
+## no git bash você pode iniciar um repositorio
+git init
+
+## para adicionar um arquivo
+git add <nome do arquivo>
+
+## para comitar uma mudança
+git commit -m "Seu texto aqui"
+
+## logo em seguida alterar o nome do branch
+git checkout -b main
+
+## caso seja nessessario configurar o nome de usupario e o e-mail
+git config --global user.name "Your Name"
+git config --global user.email "youremail@yourdomain.com"
+
+## para adicionar o repositorio do github
+git remote add origin https://github.com/devPauloJunior/tutoriais.git
+
+## cano não queira fazer o add você pode também clonar o repositorio do github
+git clone https://github.com/devPauloJunior/tutoriais.git

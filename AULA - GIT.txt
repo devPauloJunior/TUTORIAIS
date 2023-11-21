@@ -1,0 +1,81 @@
+cd "nome do diretorio" - entra em um diretorio
+cd .. - ele sai do diretorio atual
+
+1. Criar dois arquivos
+2. Escolher um dos arquivos e incluir texto dentro dele
+3. O outro arquivo criado deve ser adicionado no .gitignore
+
+1. criar uma outra branch
+2. mudar para nova branch
+3. altera o conteudo de um arquivo
+4. verificar se os mesmo arquivo tem conteudos diferentes em cada branch
+
+Regras do merge
+1. você deve estar com a branch que recebera o merge ativa
+2. tenha certeza que  conteudo esta atualizado
+3. apos o merge sempre execute o add e o commit
+
+Atividade
+1. criar um diretorio dentro de Documents com o nome "Brachs"
+2. ativar o git neste diretorio
+3. criar um arquivo na branch main
+4. criar duas outras brachs
+em cada branch criar um arquivo com o mesmo nome
+5. realizar o merge de uma das branchs para a branch main
+6. realizar um merge entre as duas outras branchs
+
+1. dentro da pasta GIT crie uma pasta chamada VOGAIS
+2. dentro dela um arquivo: vogais.txt
+3. adicone o arquivo na main 👈
+4. inclua no arquivo a letra A
+5. adicone o arquivo na main 👈
+6. inclua no arquivo a letra E
+7. adicone o arquivo na main 👈
+8. crie e entre na branch vogais
+9. inclua no arquivo a letra I
+10. adicone o arquivo na vogais 👈
+11. inclua no arquivo a letra O
+12. adicone o arquivo na vogais 👈
+13. inclua no arquivo a letra U
+14. adicone o arquivo na vogais 👈
+15. volte no commit que deixe o arquivo somente com a letra A
+16. explique o que foi observado
+
+1. crie um arquivo(com qualquer nome) dentro da pasta GIT
+2. adicione esse arquivo na main
+3. inclua no arquivo cinco linhas de informações
+4. utilizando o comando "mv"(mover arquivos) execute o comando abaixo:
+mv nome_do_arquivo SENHAS/
+5. verifique o status do GIT
+6. crie uma branch aula1010
+7. adicione o arquivo nessa branch
+8. volte para a main 
+9. explique o que foi observado.
+
+1. crie um arquivo teste22.txt
+2. adicione esse arquivo a main
+3. crie um diretorio chamado 22
+4. faça uma copia de teste22.txt para o diretorio 22. Comando cp(fazer copias de arquivos)
+cp teste22.txt 22/teste22.txt
+5. crie uma branch 22
+6. dê um merge da branch main para a branch 22
+7. resolva todas solicitações do GIT
+8. explique o que foi observado
+
+1. no diretorio GIT
+2. crie um arquivo com o nome teste45.txt
+3. crie uma branch chamada projeto45
+4. adicione esse arquivo nessa branch
+5. envie essa branch para o seu GitHub
+6. valide a branch ngitos dois ambientes
+7. explique o que foi observado
+
+O comando git checkout é capaz de copiar completamente um repositório para um diretório local.
+
+V ou F?
+
+O controle de mudanças funciona de forma complementar, dentro de um sistema de gerenciamento de versões. Explique essa sentença. 
+
+Jaqueline é uma analista que planeja utilizar Git e GitHub em seu projeto. Descreva os passos que ela deve fazer para iniciar o seu ambiente monitorado pelo Git/Github.
+
+

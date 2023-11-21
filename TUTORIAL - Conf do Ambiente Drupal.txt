@@ -1,0 +1,22 @@
+
+DATABASE SUPPORT Disabled
+
+
+## problema de FILE SYSTEM Writable abrir o araqu/etc/apache2/apache2.conf
+
+
+
+
+
+## problema de CLEAN URLS Disabled
+<Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+</Directory>
+
+na opção "AllowOverride" que esta como "None" troque para "all".
+
+## problema Createuser: could not connect to database postgres: FATAL: role. Criar usuario de conexão com o PostGreSql
+sudo -u postgres createuser user_con -d -P
+

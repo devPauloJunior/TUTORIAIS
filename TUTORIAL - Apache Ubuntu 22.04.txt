@@ -1,0 +1,78 @@
+// Tutorial //
+How To Install the Apache Web Server on Ubuntu 22.04
+
+## atualizar o APT
+sudo apt update
+
+## instalar o APACHE2
+sudo apt install apache2
+
+## verificar lista de bloqueios do firewall
+sudo ufw app list
+
+## liberar o APACHE2
+sudo ufw allow 'Apache'
+
+## verificar processo no SYSTEMCTL
+sudo systemctl status apache2
+
+## verificar o ip do servidor
+hostname -I
+
+## criando o virtual hostsudo nano /var/www/your_domain/index.html
+sudo mkdir /var/www/"NOME DO APP"
+
+## alterar o dono do diretorio
+sudo chown -R $USER:$USER /var/www/"NOME DO APP"
+
+## alterar as permições do diretorio
+sudo chmod -R 755 /var/www/"NOME DO APP"
+
+## criar um arquivo HTML para validar o acesso
+sudo vim /var/www/"NOME DO APP"/index.html
+
+# criar o arquivo do virtual no APACHE2
+sudo vim /etc/apache2/sites-available/"NOME DO APP".conf
+
+## colocar o texto abaixo no arquivo e editar
+<VirtualHost *:"PORTA DO APP">
+    ServerAdmin webmaster@localhost
+    ServerName "NOME DO APP"
+    ServerAlias www."NOME DO APP"
+    DocumentRoot /var/www/"NOME DO APP"
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+## habilitar o arquivo com o a2ensite
+sudo a2ensite "NOME DO APP".conf
+
+## desabilitar o arquivo deafault 
+sudo a2dissite 000-default.conf
+
+## testar a configuração
+sudo apache2ctl configtest
+
+## liberar a porta do app(9000, 3000, 4200)
+sudo vim /etc/apache2/ports.conf
+
+## adicionar o texto
+Listen 9000
+
+## restart o serviço do APACHE2
+sudo systemctl restart apache2
+
+## verificar se a porta está escutendo
+ss -tunelp
+
+## acessar o arquivo de hosts e adicionar o endereço
+sudo vim /etc/hosts
+
+## adicionar o texto
+172.19.113.132  www.avanztst.com
+
+## testar no bowser
+www.avanztst.com
+
+## adicionar o enderço www.avanztst.com no hosts do windows
+172.19.113.132	www.avanztst.com

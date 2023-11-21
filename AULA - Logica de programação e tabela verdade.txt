@@ -1,0 +1,108 @@
+Tabela Verdade
+V V | V
+F V | V
+V F | V
+F F | F
+
+
+declare pao, faca, queijo, presunto texto
+variaveis: pao, faca, queijo, presunto : string
+Inicio
+escreva("para fazer o sanduiche você pega o?")
+leia pao
+escreva("para cortar o sanduiche use")
+leia faca
+escreva("qual primeiro ingrediente?")
+leia queijo
+escreva("qual segundo ingrediente?")
+leia presunto
+Escreve ("Sanduiche OK")
+Fim
+
+
+2 + 6 * 10
+60 + 2 = 62
+
+2 + (6 * 10)
+60 + 2 = 62
+
+(2 + 6) * 10
+8 * 10 = 80
+
+3 ** 4
+3 * 3 * 3 * 3
+81
+
+20 - 2 * 5 + 9
+20 - 10 + 9
+10 + 9
+19
+
+Escreva um algoritmo utilizando a logica de computação para dar um "bom dia".
+
+variaveis: ceu_azul:string
+inicio
+escreva("Qual seu ceu_azul?")
+Leia ceu_azul
+Se ceu_azul = "" entao
+	escreva ("Bom dia")
+Se nao
+	escreva("Bom dia" ceu_azul)
+fim se
+fim
+
+*** Faça um algoritmo utilizando a logica de computação que ajude um frentista a abastecer um veiculo com o calculo de valor final.
+
+valor_total <= valor_combustivel * litros
+
+
+
+
+
+
+
+
+
+
+
+
+
+variaveis: COMBUSTIVEL:TEXTO, VALOR_PAGAR:REAL, VALOR_LITRO:REAL, LITROS:REAL
+Inicio
+Escreva ("Deseja Alcool ou Gasolina?")
+Leia COMBUSTIVEL
+Se COMBUSTIVEL = "Alcool" então
+	Escreva("Quantos litros deseja?")
+	Leia LITROS
+	VALOR_LITRO <= 3,64
+	VALOR_PAGAR <= VALOR_LITRO * LITROS
+Se não
+	Escreva("quantos litros deseja?")
+	Leia LITROS
+	VALOR_LITRO <= 7,10
+	VALOR_PAGAR <= VALOR_LITRO * LITROS
+Fim se
+Esreva("Você vai pagar" VALOR_PAGAR)
+Escreva("Veiculo abastecido. Volte sempre")
+Fim
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

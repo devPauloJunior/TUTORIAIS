@@ -1,0 +1,62 @@
+### INSTALAÇÃO E CONFIGURAÇÃO SAMBA ###
+### CENTOS 8 ###
+
+# instalar os pacotes
+dnf install samba samba-common samba-client
+
+# gerar as senha dos usuarios do samba
+smbpasswd -a front_one
+smbpasswd -a front_two
+smbpasswd -a back_one
+smbpasswd -a back_two
+
+# alterar estrutura do smb.conf
+vim /etc/samba/smb.conf
+=====================================
+[dev_avtech]
+        comment = Acesso Dev
+        path = /var/www/html
+        browsable =yes
+        writable = yes
+        guest ok = yes
+        read only = no
+        #force user = nobody
+		 directory mask = 0775
+
+[dev_front-end]
+        comment = Acesso Front-End
+        path = /var/www/html/front-end
+        browsable =yes
+        writable = yes
+        guest ok = yes
+        read only = no
+        #force user = nobody
+
+[dev_back-end]
+        comment = Acesso Back-End
+        path = /var/www/html/back-end
+        browsable =yes
+        writable = yes
+        guest ok = yes
+        read only = no
+        #force user = nobody
+=====================================
+
+# para validar a configuração
+testparm
+
+# liberar acesso no FIREWALL
+firewall-cmd --add-service=samba --zone=public --permanent
+firewall-cmd --reload
+
+# restart do serviço
+sudo systemctl start smb
+sudo systemctl start nmb
+
+# habilitar o serviço
+sudo systemctl enable smb
+sudo systemctl enable nmb
+
+#verificar status
+sudo systemctl status nmb
+sudo systemctl status smb

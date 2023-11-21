@@ -1,0 +1,52 @@
+### INSTALAÇÃO PHP ###
+### CENTOS 8 ###
+
+# depois de instalar o HTTP faça
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+
+# desabilitar o PHP
+dnf module disable php
+
+# habilitar o repositorio REMI
+dnf module enable php:remi-8.0
+
+# instalação do PHP e COMPONENTES
+dnf install php php-cli php-common
+
+# verificar a versão
+php -v
+
+#criar aquivo INFO.PHP
+vim /var/www/html/info.php
+
+<?php
+
+phpinfo();
+
+?>
+
+# restart do serviço HTTPD e NGINX
+sudo systemctl restart httpd
+
+#VERIFICAR sudo systemctl restart nginx
+
+# instalar o MYSQL agora
+dnf install mysql-server
+
+# iniciar o serviço
+systemctl start mysqld.service
+
+# habilitar o serviço
+systemctl enable mysqld
+
+# verificar o status
+systemctl status mysqld
+
+#configurar e proteger
+mysql_secure_installation
+
+# validar o MYSQL
+mysqladmin -u root -p version
+
+#conectar ao DB
+mysql -u root -p

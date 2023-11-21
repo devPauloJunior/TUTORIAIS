@@ -1,0 +1,52 @@
+### INSTALAÇÃO E CONFIGURAÇÃO NODEJS ###
+### CENTOS 8 ###
+
+# instalar as dependencias
+yum install -y gcc-c++ make
+
+# instalar o NODEJS
+yum install nodejs npm
+
+# verificar as versões
+node -v
+npm -v
+
+# instalar o pm2
+npm install -g pm2
+
+# criar arquivo CONF do APACHE
+vim /etc/httpd/conf.d/node.conf
+
+# colocar as informações abaixo
+<VirtualHost *:80>
+ServerName  avtech
+ProxyRequests on
+ProxyPreserveHost on
+ProxyPass / http://192.168.177.215:3000
+ProxyPassReverse / http://192.168.177.215 :3000
+</VirtualHost>
+
+#colocar os dos MODULES no arquivo do APACHE
+vim /etc/httpd/conf.modules.d/10-proxy_h2.conf
+
+# colocar o conteudo abaixo
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_http_module modules/mod_proxy_http.so
+
+# restart do APACHE
+systemctl restart httpd
+
+# vá para o diretorio da sua aplicação
+cd /var/www/html/APLICAÇÃO
+
+# criar o arquivo myapp.js
+mkdir myapp.js
+
+# colocar o conteudo
+var http = require('http');
+http.createServer(function (req, res) {
+res.writeHead(200, {'Content-Type': 'text/plain'});
+res.end('Ta funcionando');
+}).listen(3000, "192.168.177.215");
+console.log('Server running at http://192.168.177.215:3000/');
+

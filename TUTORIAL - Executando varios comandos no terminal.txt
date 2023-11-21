@@ -1,0 +1,10 @@
+1) O operador ponto e vírgula (;)
+O operador ponto e vírgula (;) permite executar vários comandos em sucessão. Para entender melhor, abra uma janela de terminal (no Ubuntu e Linux Mint, pressione as teclas Ctrl + Alt + T).
+Em seguida, digite os seguintes três comandos em uma linha, separados por ponto e vírgula, e pressione Enter. 
+
+ls;pwd;whoami.
+
+2) O operador lógico E (&&)
+Se você precisa que o segundo comando seja executado depois do primeiro, separe-os com o operador lógico E, que é representado por um duplo e comercial (&&). Por exemplo, se quiser criar um diretório chamado MyFolder e depois “entrar nesta pasta", digite a seguinte sequencia e pressione Enter:
+
+mkdir MyFolder && cd MyFolder

@@ -1,0 +1,62 @@
+// Tutorial //
+How To Install the PHP 8.1 on Ubuntu 22.04
+
+## atualizar o APT
+sudo apt update
+
+## instalar o PHP 8.1
+sudo apt install --no-install-recommends php8.1
+
+## verificar versão instalada
+php -v
+
+## listar todas as extensões habilitadas no PHP 8.1
+php -m
+
+## instalar as extenções
+sudo apt install php8.1-<TAB>
+
+## lista de extenções
+php8.1-amqp	php8.1-fpm	php8.1-mailparse	php8.1-ps	php8.1-sybase
+php8.1-apcu	php8.1-gd	php8.1-mbstring		php8.1-pspell	php8.1-tidy
+php8.1-ast	php8.1-gearman	php8.1-memcache		php8.1-psr	php8.1-uopz
+php8.1-bcmath	php8.1-gmagick	php8.1-memcached	php8.1-raphf	php8.1-uploadprogress
+php8.1-bz2	php8.1-gmp	php8.1-mongodb		php8.1-readline	php8.1-uuid
+php8.1-cgi	php8.1-gnupg	php8.1-msgpack		php8.1-redis	php8.1-xdebug
+php8.1-cli	php8.1-http	php8.1-mysql		php8.1-rrd	php8.1-xml
+php8.1-common	php8.1-igbinary	php8.1-oauth		php8.1-smbclientphp8.1-xmlrpc
+php8.1-curl	php8.1-imagick	php8.1-odbc		php8.1-snmp	php8.1-xsl
+php8.1-dba	php8.1-imap	php8.1-opcache		php8.1-soap	php8.1-yac
+php8.1-dev	php8.1-interbasephp8.1-pcov		php8.1-solr	php8.1-yaml
+php8.1-ds	php8.1-intl	php8.1-pgsql		php8.1-sqlite3	php8.1-zip
+php8.1-enchant	php8.1-ldap	php8.1-phpdbg		php8.1-ssh2	php8.1-zmq
+
+## extenções instaladas
+sudo apt install php8.1-{bcmath,xml,fpm,mysql,zip,intl,ldap,gd,cli,bz2,curl,mbstring,pgsql,opcache,soap,cgi}
+
+## validar as extenções
+php --modules
+
+## instalação composer
+curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
+
+## criar o HASH
+HASH=`curl -sS https://composer.github.io/installer.sig`
+
+## verificar o HASH
+echo $HASH
+
+Output
+906a84df04cea2aa72f40b5f787e49f22d4c2f19492ac310e8cba5b96ac8b64115ac402c8cd292b8a03482574915d1a8
+
+## executar o codigo
+php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+
+Output
+Installer verified
+
+## instalando o composer
+sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+## validando instalação
+composer

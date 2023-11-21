@@ -1,0 +1,87 @@
+### INSTALAÇÃO PYTHON 3 e DJANGO ###
+### CENTOS 8 ###
+
+# instalação
+sudo dnf install python3
+
+# valida a versão 
+python3 --version
+pip3 --version
+
+#configirar o alias PYTHON para versão instalada
+alternatives --config python
+Há 2 programas que oferecem "python".
+
+  Seleção    Comando
+-----------------------------------------------
+*+ 1           /usr/libexec/no-python
+   2           /usr/bin/python3
+
+Indique para manter a seleção atual[+] ou digite o número da seleção: 2
+
+# validar se deu certo
+python --version
+
+# instalação do PARAMIKO(conexão SSH)
+sudo dnf install python3-paramiko
+
+#instalar a biblioteca EPEL
+sudo dnf install epel-release
+
+# verificar e instalar MOD_WSGI, PYTHON3, PIP3 e APACHE
+sudo dnf -y install python3-mod_wsgi
+
+# instalando o VIRTUALENV
+pip3 install virtualenv
+
+# iniciando um ambiente virtual
+virtualenv django
+
+# entrar no diretorio do ambiente virtual
+cd django
+
+# ativar o ambiente virtual
+source bin/activate
+
+# instalar o DJANGO
+pip3 install django
+
+# verificar pacostes instalados no virtualenv
+pip freeze
+	asgiref==3.5.2
+	backports.zoneinfo==0.2.1
+	Django==4.0.6
+	sqlparse==0.4.2
+
+# criar um TXT com pacotes instalados no virtualenv para instalações futuras
+pip freeze > version.txt
+
+# iniciar o projeto
+django-admin startproject hackathon .
+
+# entrar na pasta do projeto
+cd hackathon
+
+# abrir o arquivo de SETTINGS
+vim hackathon/settings.py
+
+# ediar com seu IP
+ALLOWED_HOSTS = ["your-server-ip"]
+
+# fazer todas as ativações
+python3 manage.py migrate
+
+# criar o usuario de ADM
+python3 manage.py createsuperuser
+=======================================================
+Username (leave blank to use 'root'): djangoadmin
+Email address: admin@example.com
+Password:
+Password (again):
+Superuser created successfully.
+
+# 
+python3 manage.py runserver
+python3 manage.py runserver 0.0.0.0:8080
+
+

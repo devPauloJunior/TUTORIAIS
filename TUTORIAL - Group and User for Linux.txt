@@ -1,0 +1,49 @@
+### TRABALHANDO COM GRUPOS E USUARIOS ###
+### CENTOS 8 ###
+
+
+## criar os grupos
+groupadd gp_back-end
+groupadd gp_front-end
+
+## criar os usuario com o grupo
+adduser back_one -G gp_back-end
+adduser back_two -G gp_back-end
+adduser front_one -G gp_front-end
+adduser front_two -G gp_front-end
+
+## definir a senha dos usuarios >> user1106 e user1206
+passwd front_one
+passwd front_two
+passwd back_one
+passwd back_two
+
+## criar os repositrios dos usuario no www
+mkdir /var/www/html/front-end
+mkdir /var/www/html/back-end
+
+## alterar o dono e o grupo dos repositorios para apache
+chown apache.apache *
+ls -lha
+drwxr-xr-x  2 apache apache  6 jun 22 17:51 back-end
+drwxr-xr-x  2 apache apache  6 jun 22 17:51 front-end
+
+## alterar as permições dos repositorios para 775
+chmod 775 *
+ls -lha
+drwxrwxr-x  2 apache apache  6 jun 22 17:51 back-end
+drwxrwxr-x  2 apache apache  6 jun 22 17:51 front-end
+
+## criar o repositorio de todos os alunos
+• FRONT
+mkdir adrian alana diego eduardo filipe valdison wesley gabriel guilherme pedro gustavo henrique karine kau_willian kaynan alice geisa matheus nayra nicolas paulo ronald vaniele william_m yasmim prof
+• BACK
+mkdir abraao andre claudio danilo edson erick wesley_p hemerson ian jadimar javan jefte joel tomaz juan kauhe leonardo felipe mateus michel yngrid vitor wesley_m prof
+
+## alterar o repositiro padrão dos usuarios
+vim /etc/passwd
+
+back_one:x:1000:1002::/var/www/html/back-end:/bin/bash
+back_two:x:1001:1003::/var/www/html/back-end:/bin/bash
+front_one:x:1002:1004::/var/www/html/front-end:/bin/bash
+front_two:x:1003:1005::/var/www/html/front-end:/bin/bash
