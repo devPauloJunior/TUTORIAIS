@@ -1,0 +1,184 @@
+// Tutorial //
+How to install Hadoop on Ubuntu 22.04
+
+• Installing Java and configuring environment variables
+• Creating user and configuring SSH
+• Installation and configuration of Hadoop
+
+## installing java
+sudo apt install default-jdk default-jre -y
+
+## check the ja	va version
+java -version
+
+## create a user for hadoop
+sudo adduser hadoop
+
+## enable superuser privileges to the new user
+sudo usermod -aG sudo hadoop
+
+## switch to the user
+sudo su - hadoop
+
+## install the OpenSSH
+sudo apt install openssh-server openssh-client -y
+
+## generate private and public key
+ssh-keygen -t rsa
+
+• Where to save the key (pressione enter para salvá-la dentro do seu diretório pessoal)
+• Create passphrase for keys (deixar em branco para nenhuma frase secreta)
+
+## add the public key to authorized_keys
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+
+## change the file permissions
+sudo chmod 640 ~/.ssh/authorized_keys
+
+## verify the SSH configuration
+ssh localhost
+
+• You have to do is type "yes"
+
+# log in as the hadoop user
+sudo su - hadoop
+	
+##  using the wget command to download this release 3.3.6
+wget https://downloads.apache.org/hadoop/common/stable/hadoop-3.3.6.tar.gz
+
+## extract the file
+tar -xvzf hadoop-3.3.6.tar.gz
+
+## move the extracted file to the /usr/local/hadoop
+sudo mv hadoop-3.3.6 /usr/local/hadoop
+
+## reate a directory to store logs
+sudo mkdir /usr/local/hadoop/logs
+
+## hange the ownership of the /usr/local/hadoop
+sudo chown -R hadoop:hadoop /usr/local/hadoop
+
+## configuration of the Hadoop environment variable, open the .bashrc
+sudo vim ~/.bashrc
+
+• jump to the end of the line in the vim text editor and paste the following lines
+
+export HADOOP_HOME=/usr/local/hadoop
+export HADOOP_INSTALL=$HADOOP_HOME
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export YARN_HOME=$HADOOP_HOME
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
+
+• Save changes and exit from the vim text editor
+
+## enable the changes, source the .bashrc
+source ~/.bashrc
+
+###### Configure java environment variables ######
+
+## open the hadoop-env.sh
+sudo vim $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+
+• jump to the end of the file and paste the following lines
+
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export HADOOP_CLASSPATH+=" $HADOOP_HOME/lib/*.jar"
+
+• save changes and exit from the text editor
+
+## change your current working directory to /usr/local/hadoop/lib
+cd /usr/local/hadoop/lib
+
+## download the javax activation file
+sudo wget https://jcenter.bintray.com/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar
+
+## heck the Hadoop version
+hadoop version
+
+## open the core-site.xml
+sudo vim $HADOOP_HOME/etc/hadoop/core-site.xml
+
+## add the following lines in between "<configuration>  </configuration>"
+<property>
+
+      <name>fs.default.name</name>
+      <value>hdfs://0.0.0.0:9090</value>
+      <description>The default file system URI</description>
+
+</property>
+
+## create a directory to store node metadata
+sudo mkdir -p /home/hadoop/hdfs/{namenode,datanode}
+
+## change the ownership of the created directory to the hadoop user
+sudo chown -R hadoop:hadoop /home/hadoop/hdfs
+
+## configuring the hdfs-site.xml file, you will define the location for storing node metadata, fs-image file
+sudo vim $HADOOP_HOME/etc/hadoop/hdfs-site.xml
+
+## add the following lines in between "<configuration>  </configuration>"
+<property>
+
+      <name>dfs.replication</name>
+      <value>1</value>
+</property>
+<property>
+
+      <name>dfs.name.dir</name>
+      <value>file:///home/hadoop/hdfs/namenode</value>
+
+</property>
+<property>
+
+      <name>dfs.data.dir</name>
+      <value>file:///home/hadoop/hdfs/datanode</value>
+
+</property>
+
+## editing the mapred-site.xml file, you can define the MapReduce values
+sudo vim $HADOOP_HOME/etc/hadoop/mapred-site.xml
+
+## add the following lines in between "<configuration>  </configuration>"
+<property>
+
+      <name>mapreduce.framework.name</name>
+      <value>yarn</value>
+
+</property>
+
+## edit the yarn-site.xml file, the purpose of editing this file is to define the YARN settings
+sudo vim $HADOOP_HOME/etc/hadoop/yarn-site.xml
+
+## add the following lines in between "<configuration>  </configuration>"
+<property>
+
+      <name>yarn.nodemanager.aux-services</name>
+      <value>mapreduce_shuffle</value>
+
+</property>
+
+## finally, use the following command to validate the Hadoop configuration and to format the HDFS NameNode
+hdfs namenode -format
+
+## start with starting the NameNode and DataNode
+start-dfs.sh
+
+## start the node manager and resource manager
+start-yarn.sh
+
+## verify whether the services are running as intended
+jps
+
+
+## have to know your IP
+hostname -I
+
+## access the Hadoop web interface, you will have to know your IP and append the port no 9870 in your address bar
+http://server-IP:9870
+
+## My IP is 172.19.113.132 so I will be entering the following
+http://172.19.113.132:9870

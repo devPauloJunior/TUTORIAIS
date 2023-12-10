@@ -1,0 +1,31 @@
+## Testes checkout transparente PagSeguro com Python
+## Paulo Junior
+
+from checkouts.controller import PagSeguroApiTransparent
+pagseguro_api = PagSeguroApiTransparent()
+data = pagseguro_api.get_session_id()
+session_id = data['session_id']
+api = PagSeguroApiTransparent()
+
+item1 = {'id': '0001', 'description': 'Plano Bronze', 'amount': '129.00', 'quantity': 1,}
+api.set_item(**item1)
+
+sender = {'name': 'Paulo Junior', 'area_code': 88, 'phone': 999889988, 'email': 'npaulo_ce@yahoo.com.br', 'cpf': '89489946036',}
+api.set_sender(**sender)
+
+shipping = {'street': "Rua 20", 'number': 1784, 'complement': 'casa 30', 'district': 'Centro', 'postal_code': '62540000', 'city': 'Amontada', 'state': 'CE', 'country': 'BRA',}
+api.set_shipping(**shipping)
+
+api.set_itemCount(1)
+
+api.set_payment_method('boleto')
+
+api.set_sender_hash('5d2b5db8bbcc7f798c1d67e0942fc389b95415d9c3c48a6b64221bf5f39649c7')
+
+data = api.checkout()
+
+data
+
+data = pagseguro_api.get_transaction('0E512180-015D-4DD7-B1B5-90B90CB4F7E1')
+data['transaction']['code']
+data['transaction']['status']

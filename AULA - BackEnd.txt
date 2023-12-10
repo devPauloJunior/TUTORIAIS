@@ -114,4 +114,45 @@ range(1, 5)
 
 Faça um programa que receba dois números inteiros e gere os números inteiros que estão no intervalo compreendido por eles.
 
+for trabalha com iteraveis!!!
+tem que possuir uma variavel de controle
+
+iter() - transforma um objeto em iteravel
+next() - função par imprimir os iteraveis de uma "lista"
+
+enumerate() é um iterador de indices e valores
+
+Crie um codigo que imprime todos os dias da semana na tela
+
+escreva um codigo que imprima os números de 1 até 1000, e avise quando chegar nos multiplos de 100
+
+dicionario - é uma coleção de itens que possuem chave e valor
+
+chave: valor
+
+parametro: { }
+
+inicializo: dic = {}  ou dic = dict(chave=valor)
+
+clear - limpa o dicionario
+del - exclui uma chave - del.dic[chave]
+keys - ele vai entregar todas as chaves do dicionario
+values - ele vai entregar todos os valores
+items - ele entrega todos os itens com chave e valor
+get - ele entraga um valor referenciado pela chave
+update - ele é utilizado para inserir itens no dicionario
+copy - ele faz uma copia do dicionario garantindo um novo endereço de memoria
+sorted - ordena um dicionario pelas suas chaves
+
+
+
+
+
+
+
+
+
+
+
+
 
