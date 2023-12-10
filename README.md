@@ -15,3 +15,5 @@
 > Git e GitHub
 
 > Comandos essenciais para PostgreSql  
+
+> Hadoop para Ubuntu 22.04
