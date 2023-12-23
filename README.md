@@ -17,3 +17,5 @@
 > Comandos essenciais para PostgreSql  
 
 > Hadoop para Ubuntu 22.04
+
+> Comandos essenciais para WSL2

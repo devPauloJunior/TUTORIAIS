@@ -1,0 +1,38 @@
+### COMANDOS PARA WSL2 COM ###
+### UBUNTU 22.04 ###
+
+# ver lista completa de comandos WSL2
+wsl --help
+
+# listar as distribuições
+wsl -l
+
+# desinstalar uma distribuição WSL2
+wsl --unregister <Distribution Name>
+
+# instalar uma distribuição Ubuntu no WSL2
+wsl --install <Distribution Name>
+
+# listar as distribuições válidas que podem ser instaladas WSL2
+wsl --list --online
+
+# listar as distribuições do Linux instaladas no seu computador, incluindo o estado (Stopped | Runing)
+wsl --list --verbose
+
+# atualizar a versão do WSL2 para a versão mais recente
+wsl --update
+
+# informações gerais sobre a configuração do WSL2
+wsl --status
+
+# versão do WSL2
+wsl --version
+
+# encerra imediatamente todas as distribuições em execução e a máquina virtual do utilitário do WSL2
+wsl --shutdown
+
+# endereço IP da sua distribuição do Linux instalada no WSL2
+wsl hostname -i
+
+# cancelar o registro e desinstalar uma distribuição do WSL2
+wsl --unregister <DistributionName>
