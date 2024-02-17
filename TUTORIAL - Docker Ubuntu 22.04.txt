@@ -1,0 +1,40 @@
+// Tutorial //
+How To Install Docker Engine on Ubuntu 22.04
+
+## atualizar o APT
+sudo apt update
+
+## instalar os pré-requisitos que permitem usar pacotes sobre HTTPS
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+## adicionar a chave GPG para o repositório oficial do Docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+## Adicionar o repositório do Docker no APT
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+## certifique-se de que a instalação está no repositório do Docker
+apt-cache policy docker-ce
+
+## instalar o docker
+sudo apt install docker-ce
+
+## verifique a execução do docker
+sudo systemctl status docker
+
+## evitar digitar 'sudo' sempre que executar o comando
+sudo usermod -aG docker ${USER}
+
+## para aplicar a nova associação de grupo
+su - ${USER}
+
+## docker comandos
+docker [option] [command] [arguments]
+
+## install docker-compose
+sudo apt install docker-compose
+
+## verifica a versão do docker-compose
+docker-compose --version
+
+## 

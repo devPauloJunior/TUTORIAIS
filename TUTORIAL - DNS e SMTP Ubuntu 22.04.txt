@@ -1,0 +1,20 @@
+// Tutorial //
+How To Install the DNS and SMTP on Ubuntu 22.04
+
+## atualizar o APT
+sudo apt update
+
+## encontrar nome do host
+sudo hostnamectl
+
+## setando o hostname como 'ns1.devzado.com.br'
+sudo hostnamectl set-hostname ns1.devzado.com.br
+
+## editar o arquivo /etc/hosts com
+172.31.35.135 ns1.devzado.com.br ns1
+
+## validando o FQDN
+sudo hostname --fqdn
+
+
+## 

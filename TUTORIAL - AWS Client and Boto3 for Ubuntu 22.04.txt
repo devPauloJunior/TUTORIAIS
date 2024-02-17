@@ -1,0 +1,13 @@
+// Tutorial //
+How To Install and configure AWS Client on Ubuntu 22.04
+
+## atualizar o APT
+sudo apt update
+
+## instalar o aws-cli
+sudo apt install aws-cli
+
+## verificar versão
+aws --version
+
+## 

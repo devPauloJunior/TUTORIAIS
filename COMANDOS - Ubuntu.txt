@@ -1,0 +1,6 @@
+Comandos básicos UBUNTU
+printenv | less	-> listar variáveis de ambiente Linux 
+printenv HOME ->  visualizar um valor específico de uma variável de ambiente
+echo $USER -> mostrar só o valor de uma variável de ambiente
+export teste="Testando" -> criar uma nova variável de ambiente
+unset teste -> desativar o valor de uma variável de ambiente
